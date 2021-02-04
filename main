@@ -24,6 +24,7 @@ function get_new_token() {
     curl \
       --silent \
       --fail \
+      --show-error \
       --location \
       --max-time "$REQUEST_TIMEOUT_MS" \
       --request POST "$TOKEN_URL" \
@@ -53,6 +54,7 @@ function get_device_management() {
   endpoint="$1"
   curl \
     --silent \
+    --show-error \
     --fail \
     --location \
     --max-time "$REQUEST_TIMEOUT_MS" \
