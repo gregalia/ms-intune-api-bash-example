@@ -11,9 +11,13 @@ API_BASE_URL="https://graph.microsoft.com/v1.0"
 ACCESS_TOKEN_FILE=.ACCESS_TOKEN
 REQUEST_TIMEOUT_MS=5000
 
+function error() {
+  echo "[$(date '+%FT%T%z')] ERROR: $*" >&2
+}
+
 function check_jq() {
-  if ! which jq &>/dev/null; then
-    echo "dependency 'jq' (json parser) not found" 1>&2
+  if ! which -s jq; then
+    error "dependency 'jq' (json parser) not found"
     exit 1
   fi
 }
